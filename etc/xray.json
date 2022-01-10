@@ -2,57 +2,9 @@
     "inbounds": 
     [
         {
-            "listen": "0.0.0.0",
-            "port": 80,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                {
-                    "alterId": 64,
-                    "id": "996d362b-63f7-4f21-8e2b-24ecd3141f22"
-                }
-                ],
-                "disableInsecureEncryption": false
-            },
-            "sniffing": {
-                "destOverride": [
-                "http",
-                "tls"
-                ],
-                "enabled": true
-            },
-            "streamSettings": {
-                "network": "tcp",
-                "security": "tls",
-                "tcpSettings": {
-                  "header": {
-                    "request": {
-                      "headers": {},
-                      "method": "GET",
-                      "path": [
-                        "/"
-                      ]
-                    },
-                    "response": {
-                      "headers": {},
-                      "reason": "OK",
-                      "status": "200",
-                      "version": "1.1"
-                    },
-                    "type": "http"
-                  }
-                },
-                "tlsSettings": {
-                  "certificates": [
-                    {
-                      "certificateFile": "",
-                      "keyFile": ""
-                    }
-                  ],
-                  "serverName": ""
-                }
-              },
-              "tag": "inbound-80"
+            "listen": "/etc/caddy/vmess","protocol": "vmess",
+            "settings": {"clients": [{"id": "$AUUID"}]},
+            "streamSettings": {"network": "ws","wsSettings": {"path": "/$AUUID-vmess"}}
         },
         {
             "listen": "/etc/caddy/vless","protocol": "vless",
